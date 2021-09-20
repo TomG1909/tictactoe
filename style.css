@@ -9,7 +9,7 @@ body {
     font-family: 'Permanent Marker', cursive;
 }
 
-body img {
+.bg-dark img {
     position: absolute;
     left: 0;
     right: 0;
@@ -50,7 +50,7 @@ table tr td:last-child {
 table {
     border-collapse: collapse;
     justify-content: center;
-    z-index: 99;
+    z-index: 1;
     display: flex
 }
 
@@ -116,7 +116,7 @@ td:hover {
     background-color: rgb(0, 0, 0, 0.6);
     position: absolute;
     top: 190px;
-    z-index: 99;
+    z-index: 5;
     transform: scaleX(0.0);
     transition: transform 225ms ease-in-out;
 }
