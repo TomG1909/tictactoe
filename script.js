@@ -3,15 +3,21 @@ let fields = [];
 let currentShape = 'cross';
 
 function fillShape(id) {
-    fields[id] = currentShape;
-    if (currentShape == 'cross') {
-        currentShape = 'circle';
-    } else {
-        currentShape = 'cross';
+    if (!fields[id]) {
+        fields[id] = currentShape;
+        if (currentShape == 'cross') {
+            currentShape = 'circle';
+            document.getElementById('player-1').classList.remove('inactive');
+            document.getElementById('player-2').classList.add('inactive');
+        } else {
+            currentShape = 'cross';
+            document.getElementById('player-2').classList.remove('inactive');
+            document.getElementById('player-1').classList.add('inactive');
+        }
+        console.log(fields);
+        draw();
+        checkForWin();
     }
-    console.log(fields);
-
-    draw();
 }
 
 function draw() {
@@ -29,5 +35,49 @@ function draw() {
             document.getElementById('cross_' + i).classList.remove('d-none');
         }
 
+    }
+
+}
+
+
+function checkForWin() {
+    let winner;
+    if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
+        winner = fields[0];
+    }
+
+    if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
+        winner = fields[3];
+    }
+
+    if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
+        winner = fields[6];
+    }
+
+    if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0]) {
+        winner = fields[0];
+    }
+
+    if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
+        winner = fields[1];
+    }
+
+    if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
+        winner = fields[2];
+    }
+
+    if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
+        winner = fields[1];
+    }
+
+    if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
+        winner = fields[0];
+    }
+
+    if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
+        winner = fields[2];
+    }
+    if (winner) {
+        console.log('Gewonnen!!', winner);
     }
 }
